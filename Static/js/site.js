@@ -1,5 +1,10 @@
-const _addr = "http://localhost:5000";
-const _addr1 = "http://178.57.218.210:198";
+
+let _addr;
+if (window.location.host == "")
+    _addr = "http://178.57.218.210:198";        // если страница запущена локально, то работаем с удаленным API
+else
+    _addr = "http://localhost:5000";            // иначе работаем с локальным сервером
+
 const _token = "pdebbd1b-8aba-434f-9bf6-";
 let commandTypeList;
 
@@ -25,10 +30,9 @@ async function getCommandTypes() {
         const options = document.querySelector("select");
         commandTypeList.forEach(command => options.append(createOptionRow(command)));
     } else {
-        console.log("Ошибка HTTP: " + response.status);
+        showError(`[HTTP] Status: ${response.status}, Comment: ${response.statusText}`);
     }
 }
-
 
 // Создание строки для списка выбора
 function createOptionRow(command) {

@@ -27,6 +27,8 @@ app.MapGet("/commands/types", async (context) =>
 });
 
 int transId = 611659;               // счетчик принятых команд
+string[] stateNames = { "Не отправлено", "В процессе доставки", "Доставлено" };
+Random rnd = new Random();
 
 app.MapPost("/terminals/{id}/commands", async (context) =>
 {
@@ -41,7 +43,7 @@ app.MapPost("/terminals/{id}/commands", async (context) =>
 
             command.terminal_id = Int32.Parse(context.Request.Path.ToString().Split('/')[2]);
             command.state = 0;
-            command.state_name = "Не отправлено";
+            command.state_name = stateNames[rnd.Next(0, 3)];
             command.time_created = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
             command.id = ++transId;
 
