@@ -85,7 +85,8 @@ async function sendCommand() {
 
     for (let i = 1; i <= 3; i++) {
         const param = document.querySelector(`input[name="param${i}"]`);
-        if (param && !isNaN(param.value)) command[`parameter${i}`] = parseInt(param.value, 10);
+        if (param && param.value && !isNaN(param.value))
+            command[`parameter${i}`] = parseInt(param.value, 10);
     }
     
     if (terminalId && !isNaN(terminalId)) {
