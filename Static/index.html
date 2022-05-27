@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendista</title>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css" />
+</head>
+
+<body>
+
+    <header>
+        <div class="logo"> <img src="./img/vendista.png" /> <span>VENDISTA</span></div>
+        <div class="title">Личный кабинет - Отправка команды на терминал</div>
+        <div class="user"><a href="#"><i class="fa-regular fa-user fa-2x"></i></a>&nbsp;&nbsp;Партнёр</div>
+        <div class="exit"><a href="#"><i class="fa-solid fa-arrow-right-from-bracket fa-2x"></i></a></div>
+    </header>
+
+    <div class="sidenav">
+        <a href="#"><i class="fa-solid fa-person-chalkboard fa-lg"></i> Клиенты</a>
+        <a href="#"><i class="fa-solid fa-users fa-lg"></i> Пользователи</a>
+        <a href="#"><i class="fa-solid fa-mobile-screen fa-lg"></i> Терминалы</a>
+        <a href="#"><i class="fa-solid fa-building-columns fa-lg"></i> TID Банка</a>
+        <a href="#"><i class="fa-solid fa-money-bill-transfer fa-lg"></i> Транзакции</a>
+        <a href="#"><i class="fa-solid fa-file-lines fa-lg"></i> Логи терминалов</a>
+        <a href="#"><i class="fa-solid fa-cash-register fa-lg"></i> Кассы</a>
+        <a href="#"><i class="fa-solid fa-mobile-screen fa-lg"></i><i class="fa-solid fa-person-chalkboard fa-lg"></i> Привязать терминалы к клиенту списком</a>
+    </div>
+
+    <div class="main">
+        <br>
+        <p>&nbsp;Отправка команды на терминал</p><br>
+        
+        <div class="content">
+            <table>
+                <tr>
+                    <td>&nbsp; ID Терминал(ов)</td>
+                    <td style="padding-left: 1rem;">&nbsp; Команда</td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea rows="12" cols="28" id="terminalId" style="resize: none;"></textarea>
+                    </td>
+                    <td style="padding-left: 1rem; vertical-align: top;">
+                        <div>
+                            <select style="width: 20rem;" onchange="detectCommand(this)">
+                                <option value="0" style="color: gray;">Не выбрано</option>
+                            </select>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <span id="errorMessage" style="color: red; display: none;">Ошибка: </span>
+            <br>
+            <input name="cmdId" type="hidden" />
+            <table id="tbl_params">
+                
+            </table>
+            <br>
+            <button class="btn1 back">Назад</button>
+            <button class="btn1 send" onclick="sendCommand()">Отправить</button>
+            <br><br>
+        </div>
+        <br>
+        
+        <table class="table table-striped">
+            <thead style="background-color: #4b4b4b; color: white;">
+                <tr>
+                    <th>№</th>
+                    <th>Дата и время</th>
+                    <th>Команда</th>
+                    <th>Параметр 1</th>
+                    <th>Параметр 2</th>
+                    <th>Параметр 3</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody id="cmdHistory">
+                
+            </tbody>
+        </table>
+    </div>
+
+    <script src="./js/site.js"></script>
+</body>
+
+</html>
