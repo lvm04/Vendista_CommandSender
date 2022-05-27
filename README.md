@@ -19,3 +19,4 @@
 
 ![Итог](Static/img/screen_shot.png)
 
+[](Static/demo.mkv)
