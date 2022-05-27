@@ -1,9 +1,9 @@
 
 let _addr;
-if (window.location.host == "")
-    _addr = "http://178.57.218.210:198";        // если страница запущена локально, то работаем с удаленным API
+if (window.location.host.indexOf(":5000") != -1)
+    _addr = "http://localhost:5000";            // если страница получена с локального сервера, то с ним и работаем 
 else
-    _addr = "http://localhost:5000";            // иначе работаем с локальным сервером
+    _addr = "http://178.57.218.210:198";        // иначе работаем с удаленным API        
 
 const _token = "pdebbd1b-8aba-434f-9bf6-";
 let commandTypeList;
